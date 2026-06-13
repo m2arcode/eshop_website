@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/StoreLayout.astro';
+import { site } from '../../data/site.js';
+const base = '/store';
+---
+<Layout title={`About — ${site.brand}`} description={`About ${site.brand}.`}>
+  <section class="bg-gray-50">
+    <div class="mx-auto max-w-screen-xl px-4 py-12">
+      <span class="inline-block rounded bg-primary-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">About us</span>
+      <h1 class="mt-4 text-4xl font-extrabold text-gray-900">Weight you can feel.</h1>
+    </div>
+  </section>
+  <section class="mx-auto max-w-3xl px-4 py-12">
+    <div class="space-y-5 text-lg leading-relaxed text-gray-600">
+      <p>{site.brand} is a men's clothing store built on one idea: basics that last. No flimsy cotton, no fast fashion — just heavyweight essentials and relaxed tailoring that get better the more you wear them.</p>
+      <p>Every tee starts at 240gsm. Hoodies are brushed-back and oversized. Suits are cut unstructured for movement. We produce in limited runs and ship worldwide.</p>
+    </div>
+    <div class="mt-8 grid grid-cols-3 gap-4">
+      {[['240+','gsm cotton'],['14d','easy exchange'],['∞','worldwide ship']].map((x)=>(
+        <div class="rounded-lg border border-gray-200 p-5 text-center">
+          <div class="text-3xl font-extrabold text-gray-900">{x[0]}</div>
+          <div class="mt-1 text-xs uppercase tracking-wide text-gray-400">{x[1]}</div>
+        </div>
+      ))}
+    </div>
+    <div class="mt-8"><a href={`${base}/contact`} class="inline-block rounded-lg bg-primary-700 px-6 py-3 text-sm font-semibold text-white hover:bg-primary-800">Get in touch</a></div>
+  </section>
+</Layout>

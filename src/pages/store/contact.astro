@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/StoreLayout.astro';
+import { site } from '../../data/site.js';
+const action = site.formspreeId==='your-form-id' ? `mailto:${site.email}` : `https://formspree.io/f/${site.formspreeId}`;
+const method = site.formspreeId==='your-form-id' ? 'GET' : 'POST';
+---
+<Layout title={`Contact — ${site.brand}`} description="Contact us for orders, sizing and wholesale.">
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <div class="grid gap-10 md:grid-cols-2">
+      <div>
+        <span class="inline-block rounded bg-primary-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">Contact</span>
+        <h1 class="mt-4 text-4xl font-extrabold text-gray-900">Let's talk.</h1>
+        <p class="mt-4 max-w-sm text-gray-500">Questions on sizing, an order or a wholesale enquiry? Send a message and we'll reply within one business day.</p>
+        <div class="mt-6 text-sm">
+          <div class="font-semibold text-gray-900">Email</div>
+          <a href={`mailto:${site.email}`} class="text-gray-600 hover:text-primary-700">{site.email}</a>
+        </div>
+      </div>
+      <form action={action} method={method} class="space-y-4 rounded-2xl border border-gray-200 p-6">
+        <div>
+          <label class="mb-1.5 block text-sm font-medium text-gray-900">Name</label>
+          <input name="name" required class="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm outline-none focus:border-primary-700" />
+        </div>
+        <div>
+          <label class="mb-1.5 block text-sm font-medium text-gray-900">Email</label>
+          <input name="email" type="email" required class="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm outline-none focus:border-primary-700" />
+        </div>
+        <div>
+          <label class="mb-1.5 block text-sm font-medium text-gray-900">Subject</label>
+          <select name="subject" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm outline-none focus:border-primary-700">
+            <option>Order / sizing question</option>
+            <option>Wholesale enquiry</option>
+            <option>Returns &amp; exchanges</option>
+          </select>
+        </div>
+        <div>
+          <label class="mb-1.5 block text-sm font-medium text-gray-900">Message</label>
+          <textarea name="message" rows="5" required class="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm outline-none focus:border-primary-700"></textarea>
+        </div>
+        <button class="w-full rounded-lg bg-primary-700 px-6 py-3 text-sm font-semibold text-white hover:bg-primary-800">Send message</button>
+      </form>
+    </div>
+  </section>
+</Layout>
