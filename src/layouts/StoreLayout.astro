@@ -22,7 +22,7 @@ const base = '/store';
   </head>
   <body class="bg-white text-gray-900 antialiased">
     <!-- top bar -->
-    <div class="bg-primary-900 text-gray-300 text-xs">
+    <div class="bg-neutral-900 text-gray-300 text-xs">
       <div class="mx-auto max-w-screen-xl flex items-center justify-between px-4 h-9">
         <span>Free worldwide shipping on orders over $150</span>
         <span class="hidden sm:flex gap-4">
@@ -36,18 +36,18 @@ const base = '/store';
     <header class="border-b border-gray-200 bg-white">
       <div class="mx-auto max-w-screen-xl flex items-center gap-6 px-4 py-4">
         <a href={base} class="text-2xl font-extrabold tracking-tight shrink-0">{site.brand}</a>
-        <div class="hidden md:flex flex-1 max-w-xl items-center rounded-lg border border-gray-200 bg-gray-50 focus-within:border-primary-700">
+        <div class="hidden md:flex flex-1 max-w-xl items-center rounded-lg border border-gray-200 bg-gray-50 focus-within:border-neutral-900">
           <input type="text" placeholder="Search for products…" class="flex-1 bg-transparent px-4 py-2.5 text-sm outline-none" />
           <button class="px-4 text-gray-500" aria-label="Search">
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
           </button>
         </div>
         <div class="ml-auto flex items-center gap-5 text-gray-700">
-          <a href={`${base}/contact`} class="flex items-center gap-1.5 text-sm hover:text-primary-700">
+          <a href={`${base}/contact`} class="flex items-center gap-1.5 text-sm hover:text-neutral-900">
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"/></svg>
             <span class="hidden lg:inline">Wishlist</span>
           </a>
-          <a href={`${base}/contact`} class="flex items-center gap-1.5 text-sm hover:text-primary-700">
+          <a href={`${base}/contact`} class="flex items-center gap-1.5 text-sm hover:text-neutral-900">
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm-8.5-3h9.7l1.6-6.6H6.21"/></svg>
             <span class="hidden lg:inline">Enquire</span>
           </a>
@@ -57,11 +57,11 @@ const base = '/store';
       <nav class="border-t border-gray-200 bg-white">
         <div class="mx-auto max-w-screen-xl flex items-center gap-6 px-4 h-12 overflow-x-auto text-sm font-medium">
           {categories.map((c) => (
-            <a href={`${base}/shop/${c.id}`} class="whitespace-nowrap text-gray-700 hover:text-primary-700">{c.name}</a>
+            <a href={`${base}/shop/${c.id}`} class="whitespace-nowrap text-gray-700 hover:text-neutral-900">{c.name}</a>
           ))}
           <a href={`${base}/shop/tshirt`} class="whitespace-nowrap font-semibold text-red-600 hover:text-red-700">Sale</a>
-          <a href={`${base}/about`} class="whitespace-nowrap text-gray-700 hover:text-primary-700 ml-auto">About</a>
-          <a href={`${base}/contact`} class="whitespace-nowrap text-gray-700 hover:text-primary-700">Contact</a>
+          <a href={`${base}/about`} class="whitespace-nowrap text-gray-700 hover:text-neutral-900 ml-auto">About</a>
+          <a href={`${base}/contact`} class="whitespace-nowrap text-gray-700 hover:text-neutral-900">Contact</a>
         </div>
       </nav>
     </header>
@@ -84,16 +84,16 @@ const base = '/store';
           <h4 class="text-sm font-semibold text-gray-900 mb-3">Shop</h4>
           <ul class="space-y-2 text-sm text-gray-500">
             {categories.map((c) => (
-              <li><a href={`${base}/shop/${c.id}`} class="hover:text-primary-700">{c.name}</a></li>
+              <li><a href={`${base}/shop/${c.id}`} class="hover:text-neutral-900">{c.name}</a></li>
             ))}
           </ul>
         </div>
         <div>
           <h4 class="text-sm font-semibold text-gray-900 mb-3">Help</h4>
           <ul class="space-y-2 text-sm text-gray-500">
-            <li><a href={`${base}/contact`} class="hover:text-primary-700">Contact</a></li>
-            <li><a href={`${base}/about`} class="hover:text-primary-700">About</a></li>
-            <li><a href="/privacy" class="hover:text-primary-700">Privacy policy</a></li>
+            <li><a href={`${base}/contact`} class="hover:text-neutral-900">Contact</a></li>
+            <li><a href={`${base}/about`} class="hover:text-neutral-900">About</a></li>
+            <li><a href="/privacy" class="hover:text-neutral-900">Privacy policy</a></li>
           </ul>
         </div>
       </div>

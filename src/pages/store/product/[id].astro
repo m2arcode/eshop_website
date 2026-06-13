@@ -14,8 +14,8 @@ const alibaba = alibabaHref(base);
   <section class="px-4 py-8">
     <div class="mx-auto max-w-screen-xl">
       <nav class="mb-6 text-sm text-gray-500">
-        <a href={base} class="hover:text-primary-700">Home</a> /
-        <a href={`${base}/shop/${cat.id}`} class="hover:text-primary-700">{cat.name}</a> /
+        <a href={base} class="hover:text-neutral-900">Home</a> /
+        <a href={`${base}/shop/${cat.id}`} class="hover:text-neutral-900">{cat.name}</a> /
         <span class="text-gray-900">{product.name}</span>
       </nav>
       <div class="grid gap-8 lg:grid-cols-2">
@@ -26,7 +26,7 @@ const alibaba = alibabaHref(base);
         </div>
         <!-- info -->
         <div>
-          {product.badge && <span class="inline-block rounded bg-primary-900 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">{product.badge}</span>}
+          {product.badge && <span class="inline-block rounded bg-neutral-900 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">{product.badge}</span>}
           <h1 class="mt-3 text-3xl font-extrabold text-gray-900">{product.name}</h1>
           <div class="mt-2 flex items-center gap-2 text-amber-400">★★★★★ <span class="text-sm text-gray-400">In stock</span></div>
           <p class="mt-4 text-3xl font-extrabold text-gray-900">${product.price}</p>
@@ -43,12 +43,12 @@ const alibaba = alibabaHref(base);
 
           <h3 class="mt-5 text-sm font-semibold text-gray-900">Size</h3>
           <div class="mt-2 flex flex-wrap gap-2">
-            {product.sizes.map((s)=>(<span class="min-w-11 rounded-lg border border-gray-200 px-3 py-2 text-center text-sm font-medium hover:border-primary-700">{s}</span>))}
+            {product.sizes.map((s)=>(<span class="min-w-11 rounded-lg border border-gray-200 px-3 py-2 text-center text-sm font-medium hover:border-neutral-900">{s}</span>))}
           </div>
 
           <div class="mt-6 flex flex-wrap gap-3">
             <a href={alibaba} target={site.alibabaUrl?'_blank':null} rel={site.alibabaUrl?'noopener':null} class="rounded-lg bg-[#ff6a00] px-6 py-3 text-sm font-semibold text-white hover:bg-[#e85f00]">Enquire on Alibaba</a>
-            <a href={`${base}/contact`} class="rounded-lg bg-primary-700 px-6 py-3 text-sm font-semibold text-white hover:bg-primary-800">Send an enquiry</a>
+            <a href={`${base}/contact`} class="rounded-lg bg-neutral-900 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-700">Send an enquiry</a>
           </div>
           <div class="mt-6 space-y-1.5 border-t border-gray-200 pt-5 text-sm text-gray-500">
             <p>Free worldwide shipping over $150</p>

@@ -12,11 +12,11 @@ const catSwatch = { tshirt:'#1f2937', hoodie:'#111827', suit:'#0f172a', shorts:'
     <div class="mx-auto max-w-screen-xl overflow-hidden rounded-2xl bg-white">
       <div class="grid items-center md:grid-cols-2">
         <div class="p-8 md:p-12">
-          <span class="inline-block rounded bg-primary-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">New season 2026</span>
+          <span class="inline-block rounded bg-neutral-900 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">New season 2026</span>
           <h1 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 lg:text-5xl">Heavyweight men's essentials, up to 40% off.</h1>
           <p class="mt-4 max-w-md text-gray-500">Tees, hoodies, suits and shorts built to last. Shop the new drop and enjoy free worldwide shipping over $150.</p>
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href={`${base}/shop/tshirt`} class="rounded-lg bg-primary-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-primary-800">Shop the drop</a>
+            <a href={`${base}/shop/tshirt`} class="rounded-lg bg-neutral-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-700">Shop the drop</a>
             <a href={`${base}/about`} class="rounded-lg border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-100">Our story</a>
           </div>
         </div>
@@ -55,7 +55,7 @@ const catSwatch = { tshirt:'#1f2937', hoodie:'#111827', suit:'#0f172a', shorts:'
     <div class="mx-auto max-w-screen-xl">
       <div class="mb-6 flex items-center justify-between">
         <h2 class="text-xl font-bold text-gray-900 sm:text-2xl">Best sellers</h2>
-        <a href={`${base}/shop/tshirt`} class="text-sm font-medium text-primary-700 hover:underline">View all →</a>
+        <a href={`${base}/shop/tshirt`} class="text-sm font-medium text-neutral-900 hover:underline">View all →</a>
       </div>
       <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {featured.map((p) => <StoreProductCard product={p} base={base} />)}
@@ -82,12 +82,12 @@ const catSwatch = { tshirt:'#1f2937', hoodie:'#111827', suit:'#0f172a', shorts:'
 
   <!-- PROMO BAND -->
   <section class="px-4 pb-12">
-    <div class="mx-auto max-w-screen-xl rounded-2xl bg-primary-900 px-8 py-12 text-center text-white">
+    <div class="mx-auto max-w-screen-xl rounded-2xl bg-neutral-900 px-8 py-12 text-center text-white">
       <h2 class="text-2xl font-extrabold sm:text-3xl">Get 10% off your first order</h2>
       <p class="mx-auto mt-2 max-w-md text-gray-300">Join our list for early access to drops and members-only pricing.</p>
       <form class="mx-auto mt-6 flex max-w-md gap-2">
         <input type="email" placeholder="Your email" class="flex-1 rounded-lg border-0 px-4 py-3 text-sm text-gray-900 outline-none" />
-        <button class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-primary-900 hover:bg-gray-100">Join</button>
+        <button class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-neutral-900 hover:bg-gray-100">Join</button>
       </form>
     </div>
   </section>
