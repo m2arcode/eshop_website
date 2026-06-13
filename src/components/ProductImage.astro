@@ -1,0 +1,35 @@
+---
+// Placeholder product image: a styled block with the product name.
+// When you have real photos, drop them in /public/products/<id>.jpg
+// and replace this component's <div> with an <img src=... />.
+const { product, ratio = 'aspect-[4/5]' } = Astro.props;
+const label = product.category.toUpperCase();
+---
+
+<div
+  class={`relative ${ratio} w-full overflow-hidden flex items-center justify-center`}
+  style={`background-color: ${product.swatch}`}
+>
+  <!-- subtle grid texture -->
+  <div
+    class="absolute inset-0 opacity-[0.07]"
+    style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 28px 28px;"
+  >
+  </div>
+
+  <div class="relative text-center px-6">
+    <div class="font-display uppercase text-[10px] tracking-[0.3em] text-paper/40 mb-3">{label}</div>
+    <div class="font-display uppercase font-black text-paper text-2xl sm:text-3xl leading-none">
+      {product.name}
+    </div>
+    <div class="mt-4 inline-block text-[10px] uppercase tracking-widest text-paper/30 border border-paper/20 px-2 py-1">
+      Photo coming soon
+    </div>
+  </div>
+
+  {product.badge && (
+    <span class="absolute top-3 left-3 bg-acid text-ink text-[10px] font-display font-bold uppercase tracking-wider px-2 py-1">
+      {product.badge}
+    </span>
+  )}
+</div>

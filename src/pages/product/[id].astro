@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductImage from '../../components/ProductImage.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products, getCategory, getProductsByCategory } from '../../data/products.js';
+
+export function getStaticPaths() {
+  return products.map((p) => ({ params: { id: p.id }, props: { product: p } }));
+}
+
+const { product } = Astro.props;
+const cat = getCategory(product.category);
+const related = getProductsByCategory(product.category).filter((p) => p.id !== product.id).slice(0, 3);
+---
+
+<Layout title={`${product.name} — VANTA`} description={product.desc}>
+  <section class="max-w-7xl mx-auto px-5 py-10">
+    <nav class="text-xs uppercase tracking-widest text-ink/40 mb-8">
+      <a href="/" class="hover:text-ink">Home</a> /
+      <a href={`/shop/${cat.id}`} class="hover:text-ink">{cat.name}</a> /
+      <span class="text-ink/70">{product.name}</span>
+    </nav>
+
+    <div class="grid gap-10 md:grid-cols-2">
+      <!-- image -->
+      <div class="bg-white border border-ink/5">
+        <ProductImage product={product} ratio="aspect-square" />
+      </div>
+
+      <!-- details -->
+      <div class="md:py-4">
+        {product.badge && (
+          <span class="inline-block bg-acid text-ink text-[10px] font-display font-bold uppercase tracking-wider px-2 py-1 mb-4">{product.badge}</span>
+        )}
+        <h1 class="font-display uppercase font-black text-4xl leading-none">{product.name}</h1>
+        <div class="mt-4 font-display text-2xl font-bold">${product.price}</div>
+
+        <p class="mt-6 text-ink/70 leading-relaxed">{product.desc}</p>
+
+        <!-- colors -->
+        <div class="mt-8">
+          <h3 class="font-display uppercase text-xs tracking-widest text-ink/50 mb-3">Colour</h3>
+          <div class="flex gap-3">
+            {product.colors.map((c) => (
+              <div class="flex items-center gap-2 border border-ink/15 px-3 py-2">
+                <span class="w-4 h-4 rounded-full border border-ink/20" style={`background-color:${c.hex}`}></span>
+                <span class="text-xs uppercase tracking-wide">{c.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- sizes -->
+        <div class="mt-6">
+          <h3 class="font-display uppercase text-xs tracking-widest text-ink/50 mb-3">Size</h3>
+          <div class="flex flex-wrap gap-2">
+            {product.sizes.map((s) => (
+              <span class="min-w-11 text-center font-display text-sm border border-ink/20 px-3 py-2 hover:border-ink cursor-default">{s}</span>
+            ))}
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-8 flex flex-col gap-3">
+          <a href="/contact" class="font-display uppercase tracking-widest text-sm bg-ink text-paper text-center px-8 py-4 hover:bg-ink/80 transition-colors">
+            Enquire to order
+          </a>
+          <p class="text-xs text-ink/40 text-center">No online checkout yet — send us a message and we'll sort sizing & payment directly.</p>
+        </div>
+
+        <!-- meta -->
+        <dl class="mt-10 border-t border-ink/10 pt-6 text-sm space-y-2 text-ink/60">
+          <div class="flex gap-2"><dt class="uppercase text-xs tracking-widest w-28 text-ink/40">Category</dt><dd>{cat.name}</dd></div>
+          <div class="flex gap-2"><dt class="uppercase text-xs tracking-widest w-28 text-ink/40">Shipping</dt><dd>Free worldwide over $150</dd></div>
+          <div class="flex gap-2"><dt class="uppercase text-xs tracking-widest w-28 text-ink/40">Returns</dt><dd>14-day exchange</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- related -->
+    {related.length > 0 && (
+      <div class="mt-24">
+        <h2 class="font-display uppercase font-black text-2xl md:text-3xl mb-8">More {cat.name}</h2>
+        <div class="grid gap-6 grid-cols-2 lg:grid-cols-3">
+          {related.map((p) => <ProductCard product={p} />)}
+        </div>
+      </div>
+    )}
+  </section>
+</Layout>

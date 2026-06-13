@@ -1,0 +1,47 @@
+---
+import { categories } from '../data/products.js';
+---
+
+<!-- announcement marquee -->
+<div class="bg-ink text-paper overflow-hidden whitespace-nowrap py-2 text-xs font-display uppercase tracking-widest">
+  <div class="inline-block animate-marquee">
+    {Array.from({ length: 2 }).map(() => (
+      <span>
+        Free worldwide shipping over $150 &nbsp;✦&nbsp; New drop live now &nbsp;✦&nbsp;
+        Heavyweight cotton, built to last &nbsp;✦&nbsp; Free worldwide shipping over $150 &nbsp;✦&nbsp;
+        New drop live now &nbsp;✦&nbsp; Heavyweight cotton, built to last &nbsp;✦&nbsp;
+      </span>
+    ))}
+  </div>
+</div>
+
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-ink/10">
+  <nav class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="/" class="font-display text-2xl font-black tracking-tight">VANTA</a>
+
+    <ul class="hidden md:flex items-center gap-7 text-sm font-medium uppercase tracking-wide">
+      {categories.map((c) => (
+        <li>
+          <a href={`/shop/${c.id}`} class="hover:text-ink/50 transition-colors">{c.name}</a>
+        </li>
+      ))}
+      <li><a href="/about" class="hover:text-ink/50 transition-colors">About</a></li>
+      <li><a href="/contact" class="hover:text-ink/50 transition-colors">Contact</a></li>
+    </ul>
+
+    <a href="/contact" class="text-xs font-display uppercase tracking-widest bg-ink text-paper px-4 py-2 hover:bg-ink/80 transition-colors">
+      Enquire
+    </a>
+  </nav>
+
+  <!-- mobile category row -->
+  <div class="md:hidden border-t border-ink/10 overflow-x-auto">
+    <ul class="flex items-center gap-5 px-5 py-2 text-xs font-medium uppercase tracking-wide whitespace-nowrap">
+      {categories.map((c) => (
+        <li><a href={`/shop/${c.id}`}>{c.name}</a></li>
+      ))}
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</header>

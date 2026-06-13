@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { categories, products } from '../data/products.js';
+
+const featured = products.filter((p) => p.badge).slice(0, 4);
+const catSwatch = {
+  tshirt: '#1c1c1c',
+  hoodie: '#222222',
+  suit: '#15171a',
+  shorts: '#2e2e28',
+};
+---
+
+<Layout>
+  <!-- HERO -->
+  <section class="bg-ink text-paper">
+    <div class="max-w-7xl mx-auto px-5 py-24 md:py-32">
+      <p class="font-display uppercase tracking-[0.4em] text-xs text-acid mb-6">Spring drop · 2026</p>
+      <h1 class="font-display font-black uppercase leading-[0.9] text-6xl sm:text-7xl md:text-8xl">
+        Built<br />heavy.<br />Worn<span class="text-acid"> hard.</span>
+      </h1>
+      <p class="mt-8 max-w-md text-paper/60 text-lg leading-relaxed">
+        Men's essentials with weight to them — heavyweight tees, oversized hoodies,
+        relaxed suits and street-ready shorts.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/shop/tshirt" class="font-display uppercase tracking-widest text-sm bg-acid text-ink px-8 py-4 hover:bg-acid/80 transition-colors">
+          Shop the drop
+        </a>
+        <a href="/about" class="font-display uppercase tracking-widest text-sm border border-paper/30 px-8 py-4 hover:border-acid hover:text-acid transition-colors">
+          Our story
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="max-w-7xl mx-auto px-5 py-20">
+    <div class="flex items-end justify-between mb-8">
+      <h2 class="font-display uppercase font-black text-3xl md:text-4xl">Shop by category</h2>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {categories.map((c) => (
+        <a href={`/shop/${c.id}`} class="group relative aspect-[3/4] overflow-hidden flex flex-col justify-end p-6"
+           style={`background-color:${catSwatch[c.id]}`}>
+          <div class="absolute inset-0 opacity-[0.07]"
+               style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
+          <div class="relative transition-transform duration-500 group-hover:-translate-y-1">
+            <div class="font-display uppercase font-black text-paper text-3xl leading-none">{c.name}</div>
+            <p class="mt-2 text-paper/50 text-xs uppercase tracking-wider">{c.tagline}</p>
+            <span class="mt-4 inline-block font-display uppercase text-xs tracking-widest text-acid">Shop →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="max-w-7xl mx-auto px-5 pb-8">
+    <div class="flex items-end justify-between mb-8">
+      <h2 class="font-display uppercase font-black text-3xl md:text-4xl">Featured</h2>
+      <a href="/shop/tshirt" class="font-display uppercase text-xs tracking-widest hover:text-ink/50">View all →</a>
+    </div>
+    <div class="grid gap-6 grid-cols-2 lg:grid-cols-4">
+      {featured.map((p) => <ProductCard product={p} />)}
+    </div>
+  </section>
+
+  <!-- VALUE STRIP -->
+  <section class="max-w-7xl mx-auto px-5 py-20">
+    <div class="grid gap-8 md:grid-cols-3 border-y border-ink/10 py-12">
+      <div>
+        <div class="font-display uppercase text-acid text-xs tracking-widest mb-2" style="color:#9aa800">01 / Fabric</div>
+        <h3 class="font-display uppercase font-bold text-lg">Heavyweight only</h3>
+        <p class="mt-2 text-sm text-ink/60 leading-relaxed">No flimsy cotton. Everything starts at 240gsm and goes up from there.</p>
+      </div>
+      <div>
+        <div class="font-display uppercase text-xs tracking-widest mb-2" style="color:#9aa800">02 / Fit</div>
+        <h3 class="font-display uppercase font-bold text-lg">Relaxed by design</h3>
+        <p class="mt-2 text-sm text-ink/60 leading-relaxed">Boxy tees, oversized hoods, unstructured tailoring. Cut to move.</p>
+      </div>
+      <div>
+        <div class="font-display uppercase text-xs tracking-widest mb-2" style="color:#9aa800">03 / Shipping</div>
+        <h3 class="font-display uppercase font-bold text-lg">Worldwide</h3>
+        <p class="mt-2 text-sm text-ink/60 leading-relaxed">Free shipping over $150. Delivered wherever you are.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
