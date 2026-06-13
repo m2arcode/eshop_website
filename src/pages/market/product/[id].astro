@@ -1,0 +1,59 @@
+---
+import Layout from '../../../layouts/MarketLayout.astro';
+import { products, getCategory, getProductsByCategory } from '../../../data/products.js';
+import { site, alibabaHref } from '../../../data/site.js';
+export function getStaticPaths(){ return products.map((p)=>({params:{id:p.id},props:{product:p}})); }
+const { product } = Astro.props;
+const cat = getCategory(product.category);
+const related = getProductsByCategory(product.category).filter((p)=>p.id!==product.id).slice(0,4);
+const base='/market';
+const alibaba = alibabaHref(base);
+---
+<Layout title={`${product.name} — MARKET`} description={product.desc}>
+  <section class="wrap" style="padding:18px 22px">
+    <p class="up" style="font-size:11px;color:var(--muted)"><a href={base}>Home</a> / <a href={`${base}/shop/${cat.id}`}>{cat.name}</a> / {product.name}</p>
+  </section>
+  <section class="wrap" style="padding:0 22px 50px">
+    <div style="display:grid;gap:36px;grid-template-columns:1fr 1fr;align-items:start" class="pg">
+      <div class="swb card" style={`aspect-ratio:1;background:${product.swatch}`}>
+        <div class="tex"></div>
+        <span class="head up" style="color:#fff;font-size:18px;font-weight:600;text-align:center;padding:0 24px">{product.name}</span>
+      </div>
+      <div>
+        {product.badge && <span class="head up" style="display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:600;padding:5px 10px;border-radius:3px;margin-bottom:12px">{product.badge}</span>}
+        <h1 class="head" style="font-size:30px;font-weight:700;line-height:1.1">{product.name}</h1>
+        <div style="color:#f5a623;font-size:14px;letter-spacing:2px;margin-top:8px">★★★★★ <span style="color:var(--muted);font-size:12px">(in stock)</span></div>
+        <div class="head" style="font-size:28px;font-weight:700;margin-top:14px;color:var(--ink)">${product.price}</div>
+        <p style="margin-top:16px;color:#4b5563;line-height:1.7;font-size:15px">{product.desc}</p>
+
+        <p class="head up" style="font-size:12px;color:var(--muted);margin-top:24px;margin-bottom:8px">Colour</p>
+        <div style="display:flex;gap:10px">{product.colors.map((c)=>(<span style="display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:4px;padding:8px 12px"><span style={`width:16px;height:16px;border-radius:50%;background:${c.hex};border:1px solid #0002`}></span><span style="font-size:12px">{c.name}</span></span>))}</div>
+
+        <p class="head up" style="font-size:12px;color:var(--muted);margin-top:18px;margin-bottom:8px">Size</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">{product.sizes.map((s)=>(<span class="head" style="min-width:44px;text-align:center;border:1px solid var(--line);border-radius:4px;padding:9px 12px;font-size:14px;font-weight:600">{s}</span>))}</div>
+
+        <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href={alibaba} target={site.alibabaUrl?'_blank':null} rel={site.alibabaUrl?'noopener':null} class="pill" style="background:#ff6a00">Enquire on Alibaba</a>
+          <a href={`${base}/contact`} class="pill" style="background:var(--ink)">Send an enquiry</a>
+        </div>
+        <div style="margin-top:22px;border-top:1px solid var(--line);padding-top:16px;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px">
+          <span>🚚 Free worldwide shipping over $150</span><span>↩️ 14-day easy exchange</span>
+        </div>
+      </div>
+    </div>
+    {related.length>0 && (
+      <div style="margin-top:50px">
+        <h2 class="head" style="font-size:22px;font-weight:700;margin-bottom:20px">More {cat.name}</h2>
+        <div class="grid c4">
+          {related.map((p)=>(
+            <a href={`${base}/product/${p.id}`} class="card" style="display:block">
+              <div class="swb" style={`aspect-ratio:1;background:${p.swatch}`}><div class="tex"></div><span class="head up" style="color:#fff;font-size:12px;font-weight:600;text-align:center;padding:0 14px">{p.name}</span></div>
+              <div style="padding:12px"><h3 class="head" style="font-size:13px;font-weight:600;margin-bottom:6px">{p.name}</h3><span class="head" style="font-weight:700">${p.price}</span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </section>
+  <style>@media(max-width:879px){.pg{grid-template-columns:1fr !important}}</style>
+</Layout>

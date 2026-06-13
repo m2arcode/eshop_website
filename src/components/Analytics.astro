@@ -1,0 +1,13 @@
+---
+// Injects Google Analytics 4 + Google Ads tags ONLY when ids are set in site config.
+import { site } from '../data/site.js';
+const ids = [site.ga4Id, site.googleAdsId].filter(Boolean);
+const primary = site.ga4Id || site.googleAdsId;
+const configLines = ids.map((id) => `gtag('config','${id}');`).join('');
+---
+{primary && (
+  <>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${primary}`}></script>
+    <script is:inline set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());${configLines}`}></script>
+  </>
+)}

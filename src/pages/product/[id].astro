@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import ProductImage from '../../components/ProductImage.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { products, getCategory, getProductsByCategory } from '../../data/products.js';
+import { site, alibabaHref } from '../../data/site.js';
+const alibaba = alibabaHref('');
 
 export function getStaticPaths() {
   return products.map((p) => ({ params: { id: p.id }, props: { product: p } }));
@@ -62,10 +64,13 @@ const related = getProductsByCategory(product.category).filter((p) => p.id !== p
 
         <!-- CTA -->
         <div class="mt-8 flex flex-col gap-3">
-          <a href="/contact" class="font-display uppercase tracking-widest text-sm bg-ink text-paper text-center px-8 py-4 hover:bg-ink/80 transition-colors">
-            Enquire to order
+          <a href={alibaba} target={site.alibabaUrl ? '_blank' : null} rel={site.alibabaUrl ? 'noopener' : null} class="font-display uppercase tracking-widest text-sm bg-[#ff6a00] text-white text-center px-8 py-4 hover:bg-[#e85f00] transition-colors">
+            Enquire on Alibaba
           </a>
-          <p class="text-xs text-ink/40 text-center">No online checkout yet — send us a message and we'll sort sizing & payment directly.</p>
+          <a href="/contact" class="font-display uppercase tracking-widest text-sm bg-ink text-paper text-center px-8 py-4 hover:bg-ink/80 transition-colors">
+            Send an enquiry
+          </a>
+          <p class="text-xs text-ink/40 text-center">Order via our Alibaba store, or message us directly for sizing & wholesale.</p>
         </div>
 
         <!-- meta -->
@@ -74,17 +79,4 @@ const related = getProductsByCategory(product.category).filter((p) => p.id !== p
           <div class="flex gap-2"><dt class="uppercase text-xs tracking-widest w-28 text-ink/40">Shipping</dt><dd>Free worldwide over $150</dd></div>
           <div class="flex gap-2"><dt class="uppercase text-xs tracking-widest w-28 text-ink/40">Returns</dt><dd>14-day exchange</dd></div>
         </dl>
-      </div>
-    </div>
-
-    <!-- related -->
-    {related.length > 0 && (
-      <div class="mt-24">
-        <h2 class="font-display uppercase font-black text-2xl md:text-3xl mb-8">More {cat.name}</h2>
-        <div class="grid gap-6 grid-cols-2 lg:grid-cols-3">
-          {related.map((p) => <ProductCard product={p} />)}
-        </div>
-      </div>
-    )}
-  </section>
-</Layout>
+     

@@ -1,0 +1,69 @@
+---
+// ATELIER theme layout — premium minimal menswear boutique
+import Analytics from '../components/Analytics.astro';
+import { categories } from '../data/products.js';
+const { title = 'ATELIER — Considered Menswear', description = 'Considered menswear in heavyweight cotton and unstructured tailoring.' } = Astro.props;
+const base = '/atelier';
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<Analytics />
+<style>
+  :root{ --serif:"Cormorant Garamond",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+         --cream:#f6f3ee; --ink:#1c1a17; --tan:#8a7355; --line:#e1dad0; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-weight:300;-webkit-font-smoothing:antialiased}
+  .serif{font-family:var(--serif)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .up{text-transform:uppercase;letter-spacing:.22em}
+  .btn{display:inline-block;font-size:11px;padding:15px 34px;border:1px solid var(--ink);transition:.25s;text-transform:uppercase;letter-spacing:.22em}
+  .btn:hover{background:var(--ink);color:var(--cream)}
+  .btn-tan{background:var(--tan);border-color:var(--tan);color:#fff}
+  .btn-tan:hover{background:#6f5c43;border-color:#6f5c43}
+  .grid{display:grid;gap:26px}
+  @media(min-width:760px){.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}}
+  @media(max-width:759px){.c3,.c4{grid-template-columns:repeat(2,1fr)}}
+  .swatchblock{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .swatchblock .tex{position:absolute;inset:0;opacity:.06;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:20px 20px}
+</style>
+</head>
+<body>
+<div style="border-bottom:1px solid var(--line)">
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;height:42px;font-size:10px">
+    <span class="up" style="color:var(--tan)">Complimentary shipping over $150</span>
+    <span class="up">Worldwide delivery</span>
+  </div>
+</div>
+<header class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:26px;padding-bottom:26px">
+  <nav class="up" style="font-size:11px;display:flex;gap:26px">
+    {categories.map((c)=>(<a href={`${base}/shop/${c.id}`}>{c.name}</a>))}
+  </nav>
+  <a href={base} class="serif" style="font-size:30px;letter-spacing:.18em;font-weight:500">ATELIER</a>
+  <nav class="up" style="font-size:11px;display:flex;gap:26px">
+    <a href={`${base}/about`}>About</a><a href={`${base}/contact`}>Contact</a>
+  </nav>
+</header>
+<main>
+  <slot />
+</main>
+<footer style="border-top:1px solid var(--line);padding:50px 0;margin-top:40px">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center">
+    <a href={base} class="serif" style="font-size:24px;letter-spacing:.16em">ATELIER</a>
+    <nav class="up" style="font-size:11px;display:flex;gap:24px;flex-wrap:wrap">
+      {categories.map((c)=>(<a href={`${base}/shop/${c.id}`}>{c.name}</a>))}
+      <a href={`${base}/about`}>About</a><a href={`${base}/contact`}>Contact</a><a href="/privacy">Privacy</a>
+    </nav>
+    <span class="up" style="font-size:10px;color:#90897d">© 2026 Atelier</span>
+  </div>
+</footer>
+</body>
+</html>

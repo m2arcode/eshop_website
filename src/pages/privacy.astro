@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site.js';
+const updated = 'June 2026';
+---
+
+<Layout title={`Privacy Policy — ${site.brand}`} description={`How ${site.brand} collects, uses and protects your information.`}>
+  <section class="max-w-3xl mx-auto px-5 py-16">
+    <h1 class="font-display uppercase font-black text-4xl mb-2">Privacy Policy</h1>
+    <p class="text-ink/40 text-sm mb-10">Last updated: {updated}</p>
+
+    <div class="space-y-7 text-ink/80 leading-relaxed">
+      <p>This Privacy Policy explains how {site.brand} (“we”, “us”) collects, uses and protects your information when you visit our website or contact us.</p>
+
+      <div>
+        <h2 class="font-display uppercase font-bold text-lg mb-2">Information we collect</h2>
+        <p>When you submit our contact or enquiry form we collect the details you provide — typically your name, email address and message. When you browse the site we may collect standard analytics data (such as pages visited and approximate location) through cookies and similar technologies.</p>
+      </div>
+
+      <div>
+        <h2 class="font-display uppercase font-bold text-lg mb-2">How we use it</h2>
+        <p>We use your information to respond to your enquiries, process and fulfil orders, improve our website and products, and — where you have not opted out — send occasional updates. We do not sell your personal information.</p>
+      </div>
+
+      <div>
+        <h2 class="font-display uppercase font-bold text-lg mb-2">Cookies & analytics</h2>
+        <p>We use analytics tools such as Google Analytics and advertising tools such as Google Ads to understand traffic and measure campaign performance. These services may set cookies on your device. You can disable cookies in your browser settings at any time.</p>
+      </div>
+
+      <div>
+        <h2 class="font-display uppercase font-bold text-lg mb-2">Third parties</h2>
+        <p>Your form submissions may be processed by our form provider and email provider solely to deliver your message to us. Orders and enquiries may be handled via third-party platforms (for example Alibaba) under their own privacy terms.</p>
+      </div>
+
+      <div>
+        <h2 class="font-display uppercase font-bold text-lg mb-2">Your rights</h2>
+        <p>You may request access to, correction of, or deletion of your personal information at any time by contacting us. We retain personal data only as long as necessary for the purposes described above.</p>
+      </div>
+
+      <div>
+        <h2 class="font-display uppercase font-bold text-lg mb-2">Contact</h2>
+        <p>Questions about this policy? Email us at <a href={`mailto:${site.email}`} class="underline hover:text-ink">{site.email}</a>.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

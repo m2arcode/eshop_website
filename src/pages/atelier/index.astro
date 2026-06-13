@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/AtelierLayout.astro';
+import { categories, products } from '../../data/products.js';
+const featured = products.filter((p)=>p.badge).slice(0,3);
+const base='/atelier';
+const catImg={tshirt:'#2a2722',hoodie:'#26241f',suit:'#1b1a17',shorts:'#302d26'};
+---
+<Layout>
+  <!-- hero -->
+  <section class="wrap" style="padding:30px 28px 70px">
+    <div class="swatchblock" style="aspect-ratio:16/8;background:linear-gradient(120deg,#23211d,#3b372f);align-items:flex-end;justify-content:flex-start;padding:48px">
+      <div class="tex"></div>
+      <div style="position:relative;color:var(--cream);max-width:560px">
+        <p class="up" style="font-size:11px;color:#d8c9b3;margin-bottom:18px">The Spring Collection</p>
+        <h1 class="serif" style="font-size:clamp(40px,6vw,78px);line-height:1.02;font-weight:500">Quiet luxury,<br/>built to last.</h1>
+        <p style="margin-top:22px;max-width:400px;color:#d8d2c8;font-size:15px;line-height:1.7">Considered menswear in heavyweight cotton and unstructured tailoring — tees, hoodies, suits and shorts, made to be kept.</p>
+        <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
+          <a href={`${base}/shop/tshirt`} class="btn btn-tan">Explore the edit</a>
+          <a href={`${base}/about`} class="btn" style="border-color:#d8c9b3;color:var(--cream)">Our story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- collections -->
+  <section class="wrap" style="padding-bottom:70px">
+    <div style="text-align:center;margin-bottom:40px">
+      <p class="up" style="font-size:11px;color:var(--tan)">Browse</p>
+      <h2 class="serif" style="font-size:40px;font-weight:500;margin-top:6px">The Collections</h2>
+    </div>
+    <div class="grid c4">
+      {categories.map((c)=>(
+        <a href={`${base}/shop/${c.id}`}>
+          <div class="swatchblock" style={`aspect-ratio:3/4;background:${catImg[c.id]};align-items:flex-end;justify-content:flex-start;padding:22px`}>
+            <div class="tex"></div>
+            <span class="serif" style="position:relative;color:var(--cream);font-size:26px">{c.name}</span>
+          </div>
+          <p class="up" style="font-size:10px;color:#90897d;margin-top:12px">{c.tagline}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+  <!-- featured -->
+  <section style="background:#efe9e0;padding:70px 0">
+    <div class="wrap">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px">
+        <h2 class="serif" style="font-size:36px;font-weight:500">Featured pieces</h2>
+        <a href={`${base}/shop/tshirt`} class="up" style="font-size:11px;color:var(--tan)">View all</a>
+      </div>
+      <div class="grid c3">
+        {featured.map((p)=>(
+          <a href={`${base}/product/${p.id}`}>
+            <div class="swatchblock" style={`aspect-ratio:4/5;background:${p.swatch}`}>
+              <div class="tex"></div>
+              <span class="serif" style="color:var(--cream);font-size:26px;text-align:center;padding:0 20px">{p.name}</span>
+              <span class="up" style="position:absolute;top:16px;left:16px;font-size:9px;background:var(--cream);color:var(--ink);padding:5px 9px">{p.badge}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:16px">
+              <span class="serif" style="font-size:19px">{p.name}</span><span style="font-size:14px">${p.price}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <!-- ethos -->
+  <section class="wrap" style="padding:80px 28px;text-align:center;max-width:760px">
+    <p class="up" style="font-size:11px;color:var(--tan);margin-bottom:20px">Our ethos</p>
+    <p class="serif" style="font-size:clamp(24px,3.5vw,34px);line-height:1.4">“We make fewer things, better. Heavyweight fabric, an unhurried fit, and a finish that earns its place in your wardrobe for years.”</p>
+  </section>
+</Layout>

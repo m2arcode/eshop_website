@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/MarketLayout.astro';
+const base='/market';
+---
+<Layout title="About — MARKET" description="About MARKET men's clothing store.">
+  <section style="background:linear-gradient(100deg,#1f2530,#39414f);color:#fff">
+    <div class="wrap" style="padding:60px 22px">
+      <span class="head up" style="background:var(--red);font-size:12px;font-weight:600;padding:6px 12px;border-radius:3px">About us</span>
+      <h1 class="head" style="font-size:clamp(32px,5vw,52px);font-weight:700;margin-top:16px;line-height:1.05">Weight you can feel.</h1>
+    </div>
+  </section>
+  <section class="wrap" style="max-width:760px;padding:50px 22px">
+    <div style="font-size:16px;line-height:1.8;color:#374151;display:flex;flex-direction:column;gap:20px">
+      <p>MARKET is a men's clothing store built on one idea: basics that last. No flimsy cotton, no fast fashion — just heavyweight essentials and relaxed tailoring that get better the more you wear them.</p>
+      <p>Every tee starts at 240gsm. Hoodies are brushed-back and oversized. Suits are cut unstructured for movement. We produce in limited runs and ship worldwide.</p>
+    </div>
+    <div class="grid c3" style="margin-top:36px">
+      {[['240+','gsm cotton'],['14d','easy exchange'],['∞','worldwide ship']].map((x)=>(
+        <div style="border:1px solid var(--line);border-radius:8px;padding:24px;text-align:center"><div class="head" style="font-size:34px;font-weight:700;color:var(--red)">{x[0]}</div><div class="up" style="font-size:11px;color:var(--muted);margin-top:4px">{x[1]}</div></div>
+      ))}
+    </div>
+    <div style="text-align:center;margin-top:34px"><a href={`${base}/contact`} class="pill">Get in touch</a></div>
+  </section>
+</Layout>

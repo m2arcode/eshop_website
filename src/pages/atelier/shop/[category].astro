@@ -1,0 +1,31 @@
+---
+import Layout from '../../../layouts/AtelierLayout.astro';
+import { categories, getProductsByCategory, getCategory } from '../../../data/products.js';
+export function getStaticPaths(){ return categories.map((c)=>({params:{category:c.id}})); }
+const { category } = Astro.params;
+const cat = getCategory(category);
+const items = getProductsByCategory(category);
+const base='/atelier';
+---
+<Layout title={`${cat.name} — ATELIER`} description={cat.tagline}>
+  <section class="wrap" style="padding:40px 28px 10px;text-align:center">
+    <p class="up" style="font-size:11px;color:var(--tan)">{cat.tagline}</p>
+    <h1 class="serif" style="font-size:clamp(36px,5vw,56px);font-weight:500;margin-top:6px">{cat.name}</h1>
+  </section>
+  <section class="wrap" style="padding:30px 28px 70px">
+    <div class="grid c3">
+      {items.map((p)=>(
+        <a href={`${base}/product/${p.id}`}>
+          <div class="swatchblock" style={`aspect-ratio:4/5;background:${p.swatch}`}>
+            <div class="tex"></div>
+            <span class="serif" style="color:var(--cream);font-size:24px;text-align:center;padding:0 18px">{p.name}</span>
+            {p.badge && <span class="up" style="position:absolute;top:14px;left:14px;font-size:9px;background:var(--cream);color:var(--ink);padding:5px 9px">{p.badge}</span>}
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:14px">
+            <span class="serif" style="font-size:18px">{p.name}</span><span style="font-size:14px">${p.price}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

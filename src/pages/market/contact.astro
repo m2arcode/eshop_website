@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/MarketLayout.astro';
+import { site } from '../../data/site.js';
+const action = site.formspreeId==='your-form-id' ? `mailto:${site.email}` : `https://formspree.io/f/${site.formspreeId}`;
+const method = site.formspreeId==='your-form-id' ? 'GET' : 'POST';
+---
+<Layout title="Contact — MARKET" description="Contact MARKET for orders, sizing and wholesale.">
+  <section class="wrap" style="max-width:980px;padding:46px 22px;display:grid;gap:40px;grid-template-columns:1fr 1fr" class="ct">
+    <div>
+      <span class="head up" style="background:var(--red);color:#fff;font-size:12px;font-weight:600;padding:6px 12px;border-radius:3px">Contact</span>
+      <h1 class="head" style="font-size:clamp(30px,4vw,46px);font-weight:700;margin-top:14px;line-height:1.1">Let's talk.</h1>
+      <p style="margin-top:16px;color:#4b5563;line-height:1.7;max-width:340px">Questions on sizing, an order or a wholesale enquiry? Send a message and we'll reply within one business day.</p>
+      <div style="margin-top:24px;font-size:14px"><div class="head up" style="font-size:11px;color:var(--muted)">Email</div><a href={`mailto:${site.email}`}>{site.email}</a></div>
+    </div>
+    <form action={action} method={method} style="display:flex;flex-direction:column;gap:14px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:26px">
+      <input name="name" placeholder="Name" required style="border:1px solid var(--line);border-radius:4px;padding:12px;font-size:14px" />
+      <input name="email" type="email" placeholder="Email" required style="border:1px solid var(--line);border-radius:4px;padding:12px;font-size:14px" />
+      <select name="subject" style="border:1px solid var(--line);border-radius:4px;padding:12px;font-size:14px;background:#fff"><option>Order / sizing question</option><option>Wholesale enquiry</option><option>Returns & exchanges</option></select>
+      <textarea name="message" rows="5" placeholder="Message" required style="border:1px solid var(--line);border-radius:4px;padding:12px;font-size:14px"></textarea>
+      <button class="pill" style="justify-content:center">Send message</button>
+    </form>
+  </section>
+  <style>@media(max-width:879px){.ct{grid-template-columns:1fr !important}}</style>
+</Layout>
