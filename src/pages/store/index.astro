@@ -13,9 +13,9 @@ const catImg = {
   shorts:'https://picsum.photos/seed/cat-shorts/600/450',
 };
 const reviews = [
-  ['“Heaviest, best-fitting tee I own. Washed it ten times, still perfect.”','James R.','T-Shirts'],
-  ['“The suit drapes incredibly for the price. Wore it to a wedding, got asked where it\'s from all night.”','Daniel K.','Suits'],
-  ['“Hoodie is unreal — proper weight, proper oversized. Ordering a second.”','Marcus T.','Hoodies'],
+  ['"Heaviest, best-fitting tee I own. Washed it ten times, still perfect."','James R.','T-Shirts'],
+  ['"The suit drapes incredibly for the price. Wore it to a wedding, got asked where it\'s from all night."','Daniel K.','Suits'],
+  ['"Hoodie is unreal — proper weight, proper oversized. Ordering a second."','Marcus T.','Hoodies'],
 ];
 ---
 <Layout>
@@ -55,7 +55,7 @@ const reviews = [
             <div class="relative">
               <p class="text-lg font-bold">{c.name}</p>
               <p class="mt-1 text-xs text-gray-200">{c.tagline}</p>
-              <span class="mt-3 inline-block text-xs font-semibold text-white/90 transition group-hover:translate-x-1">Shop now →</span>
+              <span class="mt-3 inline-block text-xs font-semibold text-white/90 transition group-hover:translate-x-1">Shop now &rarr;</span>
             </div>
           </a>
         ))}
@@ -67,10 +67,9 @@ const reviews = [
   <section class="px-4 pb-10">
     <div class="mx-auto max-w-screen-xl">
       <div class="relative overflow-hidden rounded-2xl" id="adCarousel">
-        <!-- Slides wrapper -->
         <div class="flex transition-transform duration-500 ease-in-out" id="adSlides">
 
-          <!-- Slide 1 — T-Shirts -->
+          <!-- Slide 1 - T-Shirts -->
           <div class="relative min-w-full h-[340px] md:h-[480px] flex-shrink-0">
             <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=1600&q=80" alt="Heavyweight Tees" class="absolute inset-0 w-full h-full object-cover object-top" loading="eager" />
             <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
@@ -79,12 +78,12 @@ const reviews = [
                 <span class="text-xs font-semibold uppercase tracking-widest text-gray-300">New Drop 2026</span>
                 <h3 class="mt-2 text-3xl md:text-5xl font-extrabold leading-tight">Heavyweight<br/>Tees</h3>
                 <p class="mt-3 text-sm text-gray-200">240+ GSM cotton. Boxy fit. Built to last.</p>
-                <a href={`${base}/shop/tshirt`} class="mt-5 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition">Shop T-Shirts →</a>
+                <a href={`${base}/shop/tshirt`} class="mt-5 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition">Shop T-Shirts &rarr;</a>
               </div>
             </div>
           </div>
 
-          <!-- Slide 2 — Hoodies -->
+          <!-- Slide 2 - Hoodies -->
           <div class="relative min-w-full h-[340px] md:h-[480px] flex-shrink-0">
             <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=1600&q=80" alt="Oversized Hoodies" class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
@@ -93,12 +92,12 @@ const reviews = [
                 <span class="text-xs font-semibold uppercase tracking-widest text-gray-300">Winter Warmers</span>
                 <h3 class="mt-2 text-3xl md:text-5xl font-extrabold leading-tight">Oversized<br/>Hoodies</h3>
                 <p class="mt-3 text-sm text-gray-200">Brushed fleece. Proper weight. Up to 40% off.</p>
-                <a href={`${base}/shop/hoodie`} class="mt-5 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition">Shop Hoodies →</a>
+                <a href={`${base}/shop/hoodie`} class="mt-5 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition">Shop Hoodies &rarr;</a>
               </div>
             </div>
           </div>
 
-          <!-- Slide 3 — Suits -->
+          <!-- Slide 3 - Suits -->
           <div class="relative min-w-full h-[340px] md:h-[480px] flex-shrink-0">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=80" alt="Relaxed Suits" class="absolute inset-0 w-full h-full object-cover object-top" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
@@ -107,14 +106,14 @@ const reviews = [
                 <span class="text-xs font-semibold uppercase tracking-widest text-gray-300">Just Landed</span>
                 <h3 class="mt-2 text-3xl md:text-5xl font-extrabold leading-tight">Relaxed<br/>Tailoring</h3>
                 <p class="mt-3 text-sm text-gray-200">Unstructured suits with an unhurried edge.</p>
-                <a href={`${base}/shop/suit`} class="mt-5 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition">Shop Suits →</a>
+                <a href={`${base}/shop/suit`} class="mt-5 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition">Shop Suits &rarr;</a>
               </div>
             </div>
           </div>
 
         </div>
 
-        <!-- Prev / Next arrows -->
+        <!-- Arrows -->
         <button id="adPrev" aria-label="Previous" class="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm hover:bg-black/70 transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
         </button>
@@ -122,7 +121,7 @@ const reviews = [
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </button>
 
-        <!-- Dot indicators -->
+        <!-- Dots -->
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10" id="adDots">
           <button data-idx="0" class="h-2 w-6 rounded-full bg-white transition-all duration-300" aria-label="Slide 1"></button>
           <button data-idx="1" class="h-2 w-2 rounded-full bg-white/50 transition-all duration-300" aria-label="Slide 2"></button>
@@ -139,7 +138,6 @@ const reviews = [
       var total = 3;
       var cur = 0;
       var timer;
-
       function goTo(n) {
         cur = (n + total) % total;
         slides.style.transform = 'translateX(-' + (cur * 100) + '%)';
@@ -148,16 +146,13 @@ const reviews = [
           d.style.background = i === cur ? '#ffffff' : 'rgba(255,255,255,0.5)';
         });
       }
-
       function startTimer() { timer = setInterval(function() { goTo(cur + 1); }, 4500); }
       function resetTimer() { clearInterval(timer); startTimer(); }
-
       document.getElementById('adNext').addEventListener('click', function() { goTo(cur + 1); resetTimer(); });
       document.getElementById('adPrev').addEventListener('click', function() { goTo(cur - 1); resetTimer(); });
       dots.forEach(function(d) {
         d.addEventListener('click', function() { goTo(parseInt(d.getAttribute('data-idx'))); resetTimer(); });
       });
-
       startTimer();
     })();
   </script>
@@ -168,4 +163,125 @@ const reviews = [
       <a href={`${base}/shop/hoodie`} class="group relative flex min-h-[220px] flex-col justify-center overflow-hidden rounded-2xl bg-gradient-to-r from-gray-900 to-gray-700 p-8 text-white">
         <p class="text-xs font-semibold uppercase tracking-widest text-gray-300">Winter warmers</p>
         <h3 class="mt-2 text-3xl font-extrabold">Hoodies up to 40% off</h3>
-        <span class="mt-4 inline-flex w-fit items-center gap-2
+        <span class="mt-4 inline-flex w-fit items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 transition group-hover:gap-3">Shop hoodies &rarr;</span>
+      </a>
+      <a href={`${base}/shop/suit`} class="group relative flex min-h-[220px] flex-col justify-center overflow-hidden rounded-2xl bg-gradient-to-r from-stone-200 to-stone-100 p-8 text-gray-900">
+        <p class="text-xs font-semibold uppercase tracking-widest text-gray-500">Just landed</p>
+        <h3 class="mt-2 text-3xl font-extrabold">The new suit collection</h3>
+        <span class="mt-4 inline-flex w-fit items-center gap-2 rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition group-hover:gap-3">Shop suits &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- BEST SELLERS -->
+  <section class="bg-gray-50 px-4 py-10 md:py-14">
+    <div class="mx-auto max-w-screen-xl">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-bold text-gray-900 sm:text-2xl">Best sellers</h2>
+        <a href={`${base}/shop/tshirt`} class="text-sm font-medium text-neutral-900 hover:underline">View all &rarr;</a>
+      </div>
+      <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        {bestSellers.map((p) => <StoreProductCard product={p} base={base} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKBOOK BANNER -->
+  <section class="px-4 py-12 md:py-16">
+    <div class="mx-auto max-w-screen-xl">
+      <div class="relative flex min-h-[340px] items-center overflow-hidden rounded-3xl bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 px-8 py-14 md:px-16">
+        <div class="absolute inset-0 opacity-[0.06]" style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:34px 34px"></div>
+        <div class="relative max-w-lg text-white">
+          <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">SS26 Lookbook</p>
+          <h2 class="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">Built for the city. Made to be lived in.</h2>
+          <p class="mt-4 text-gray-300">A wardrobe of heavyweight staples and unstructured tailoring — designed to mix, layer and last for years, not seasons.</p>
+          <a href={`${base}/shop/tshirt`} class="mt-6 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-100">Explore the collection</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW ARRIVALS -->
+  <section class="px-4 pb-10">
+    <div class="mx-auto max-w-screen-xl">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-bold text-gray-900 sm:text-2xl">New arrivals</h2>
+        <a href={`${base}/shop/shorts`} class="text-sm font-medium text-neutral-900 hover:underline">View all &rarr;</a>
+      </div>
+      <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        {newArrivals.map((p) => <StoreProductCard product={p} base={base} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY BAND -->
+  <section class="bg-neutral-900 px-4 py-14 text-white">
+    <div class="mx-auto max-w-screen-xl">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">Why us</p>
+        <h2 class="mt-3 text-2xl font-extrabold sm:text-3xl">Fewer things, made better.</h2>
+        <p class="mt-3 text-gray-300">No flimsy cotton, no fast fashion — just heavyweight pieces with an unhurried fit that earn their place in your wardrobe.</p>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-3">
+        {[
+          ['240+ GSM','Heavyweight cotton on every tee — structure you can feel.'],
+          ['Relaxed fit','Boxy tees, oversized hoods, unstructured tailoring. Cut to move.'],
+          ['Built to last','Made in limited runs and finished to be kept for years.'],
+        ].map((x) => (
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <p class="text-xl font-extrabold">{x[0]}</p>
+            <p class="mt-2 text-sm text-gray-400">{x[1]}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="px-4 py-14">
+    <div class="mx-auto max-w-screen-xl">
+      <div class="mb-8 text-center">
+        <h2 class="text-xl font-bold text-gray-900 sm:text-2xl">What customers say</h2>
+        <p class="mt-2 text-sm text-gray-500">Rated 4.8 / 5 from buyers worldwide</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        {reviews.map((r) => (
+          <figure class="rounded-2xl border border-gray-200 p-6">
+            <div class="text-amber-400">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote class="mt-3 text-gray-700">{r[0]}</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-gray-900">{r[1]} <span class="font-normal text-gray-400">&#183; {r[2]}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INCENTIVES -->
+  <section class="bg-gray-50 px-4 py-12">
+    <div class="mx-auto grid max-w-screen-xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        ['Free shipping','On all orders over $150'],
+        ['14-day returns','Easy, no-hassle exchanges'],
+        ['Secure enquiry','Your data stays protected'],
+        ['Real support','Mon-Fri, 9am-6pm'],
+      ].map((x) => (
+        <div class="rounded-lg border border-gray-200 bg-white p-5">
+          <p class="font-semibold text-gray-900">{x[0]}</p>
+          <p class="mt-1 text-sm text-gray-500">{x[1]}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="px-4 py-12">
+    <div class="mx-auto max-w-screen-xl rounded-2xl bg-neutral-900 px-8 py-14 text-center text-white">
+      <h2 class="text-2xl font-extrabold sm:text-3xl">Get 10% off your first order</h2>
+      <p class="mx-auto mt-2 max-w-md text-gray-300">Join our list for early access to drops and members-only pricing.</p>
+      <form class="mx-auto mt-6 flex max-w-md gap-2">
+        <input type="email" placeholder="Your email" class="flex-1 rounded-lg border-0 px-4 py-3 text-sm text-gray-900 outline-none" />
+        <button class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-neutral-900 hover:bg-gray-100">Join</button>
+      </form>
+    </div>
+  </section>
+</Layout>
