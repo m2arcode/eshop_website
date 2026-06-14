@@ -9,6 +9,9 @@ const cat = getCategory(product.category);
 const related = getProductsByCategory(product.category).filter((p)=>p.id!==product.id).slice(0,4);
 const base = '/store';
 const alibaba = alibabaHref(base);
+const kw = ({ tshirt:'tshirt,menswear', hoodie:'hoodie,sweatshirt', suit:'suit,man', shorts:'shorts,menswear' })[product.category] || 'menswear';
+const lock = [...product.id].reduce((a, c) => a + c.charCodeAt(0), 0);
+const img = product.image || `https://loremflickr.com/800/800/${kw}?lock=${lock}`;
 ---
 <Layout title={`${product.name} — Store`} description={product.desc}>
   <section class="px-4 py-8">
@@ -20,9 +23,8 @@ const alibaba = alibabaHref(base);
       </nav>
       <div class="grid gap-8 lg:grid-cols-2">
         <!-- image -->
-        <div class="relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl border border-gray-200" style={`background-color:${product.swatch}`}>
-          <div class="absolute inset-0 opacity-[0.06]" style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:26px 26px"></div>
-          <span class="relative px-6 text-center text-xl font-extrabold uppercase tracking-wide text-white/90">{product.name}</span>
+        <div class="relative aspect-square overflow-hidden rounded-2xl border border-gray-200 bg-gray-100">
+          <img src={img} alt={product.name} class="h-full w-full object-cover" />
         </div>
         <!-- info -->
         <div>

@@ -6,6 +6,12 @@ const bestSellers = products.slice(0, 8);
 const newArrivals = products.slice(4, 8);
 const base = '/store';
 const catSwatch = { tshirt:'#1f2937', hoodie:'#111827', suit:'#0f172a', shorts:'#1f2933' };
+const catImg = {
+  tshirt:'https://loremflickr.com/600/450/tshirt,menswear?lock=21',
+  hoodie:'https://loremflickr.com/600/450/hoodie,sweatshirt?lock=22',
+  suit:'https://loremflickr.com/600/450/suit,man?lock=23',
+  shorts:'https://loremflickr.com/600/450/shorts,menswear?lock=24',
+};
 const reviews = [
   ['“Heaviest, best-fitting tee I own. Washed it ten times, still perfect.”','James R.','T-Shirts'],
   ['“The suit drapes incredibly for the price. Wore it to a wedding, got asked where it\'s from all night.”','Daniel K.','Suits'],
@@ -44,11 +50,12 @@ const reviews = [
       <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {categories.map((c) => (
           <a href={`${base}/shop/${c.id}`} class="group relative flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-lg p-5 text-white" style={`background-color:${catSwatch[c.id]}`}>
-            <div class="absolute inset-0 opacity-[0.07]" style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:26px 26px"></div>
+            <img src={catImg[c.id]} alt={c.name} loading="lazy" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
             <div class="relative">
               <p class="text-lg font-bold">{c.name}</p>
-              <p class="mt-1 text-xs text-gray-300">{c.tagline}</p>
-              <span class="mt-3 inline-block text-xs font-semibold text-white/80 transition group-hover:translate-x-1">Shop now →</span>
+              <p class="mt-1 text-xs text-gray-200">{c.tagline}</p>
+              <span class="mt-3 inline-block text-xs font-semibold text-white/90 transition group-hover:translate-x-1">Shop now →</span>
             </div>
           </a>
         ))}
