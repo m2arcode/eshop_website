@@ -147,16 +147,16 @@ const reviews = [
   </section>
 
   <script>
-    const slides = document.getElementById('adSlides');
-    const dots = document.querySelectorAll('#adDots button');
-    const total = 4;
-    let cur = 0;
-    let timer: ReturnType<typeof setInterval>;
+    var slides = document.getElementById('adSlides');
+    var dots = document.querySelectorAll('#adDots button');
+    var total = 4;
+    var cur = 0;
+    var timer;
 
-    function goTo(n: number) {
+    function goTo(n) {
       cur = (n + total) % total;
-      (slides as HTMLElement).style.transform = `translateX(-${cur * 100}%)`;
-      dots.forEach((d, i) => {
+      slides.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach(function(d, i) {
         d.classList.toggle('w-6', i === cur);
         d.classList.toggle('bg-white', i === cur);
         d.classList.toggle('w-2', i !== cur);
@@ -164,5 +164,7 @@ const reviews = [
       });
     }
 
-    function startTimer() { timer = setInterval(() => goTo(cur + 1), 4500); }
-    function resetTimer() { clearInterval(tim
+    function startTimer() { timer = setInterval(function() { goTo(cur + 1); }, 4500); }
+    function resetTimer() { clearInterval(timer); startTimer(); }
+
+    document.getEle
