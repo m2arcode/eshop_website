@@ -16,16 +16,127 @@ const base = '/store';
     <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <Analytics />
-    <style is:global>body{font-family:"Inter",system-ui,sans-serif;background:#fff;}</style>
+    <style is:global>
+      body { font-family: "Inter", system-ui, sans-serif; background: #fff; }
+
+      /* ── SCROLL-IN ANIMATIONS ─────────────────────────────── */
+      [data-animate] {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.6s cubic-bezier(.22,1,.36,1),
+                    transform 0.6s cubic-bezier(.22,1,.36,1);
+      }
+      [data-animate].is-visible { opacity: 1; transform: none; }
+
+      /* stagger grid children */
+      [data-stagger] > * {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.5s cubic-bezier(.22,1,.36,1),
+                    transform 0.5s cubic-bezier(.22,1,.36,1);
+      }
+      [data-stagger].is-visible > *:nth-child(1) { opacity:1;transform:none;transition-delay:0s }
+      [data-stagger].is-visible > *:nth-child(2) { opacity:1;transform:none;transition-delay:.07s }
+      [data-stagger].is-visible > *:nth-child(3) { opacity:1;transform:none;transition-delay:.14s }
+      [data-stagger].is-visible > *:nth-child(4) { opacity:1;transform:none;transition-delay:.21s }
+      [data-stagger].is-visible > *:nth-child(5) { opacity:1;transform:none;transition-delay:.28s }
+      [data-stagger].is-visible > *:nth-child(6) { opacity:1;transform:none;transition-delay:.35s }
+      [data-stagger].is-visible > *:nth-child(7) { opacity:1;transform:none;transition-delay:.42s }
+      [data-stagger].is-visible > *:nth-child(8) { opacity:1;transform:none;transition-delay:.49s }
+
+      /* ── CARD LIFT ────────────────────────────────────────── */
+      .store-card {
+        transition: transform 0.35s cubic-bezier(.22,1,.36,1),
+                    box-shadow 0.35s cubic-bezier(.22,1,.36,1),
+                    border-color 0.25s;
+      }
+      .store-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.06);
+        border-color: #d1d5db;
+      }
+
+      /* ── IMAGE ZOOM ───────────────────────────────────────── */
+      .img-zoom { transition: transform 0.65s cubic-bezier(.22,1,.36,1); }
+      .store-card:hover .img-zoom { transform: scale(1.08); }
+
+      /* ── BUTTON EFFECTS ───────────────────────────────────── */
+      .btn-dark {
+        position: relative; overflow: hidden;
+        transition: transform 0.15s, box-shadow 0.2s, background-color 0.2s;
+      }
+      .btn-dark::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 55%);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .btn-dark:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+      .btn-dark:hover::after { opacity: 1; }
+      .btn-dark:active { transform: scale(0.97) translateY(0); box-shadow: none; }
+
+      .btn-light {
+        transition: transform 0.15s, box-shadow 0.2s, background-color 0.2s;
+      }
+      .btn-light:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.10); }
+      .btn-light:active { transform: scale(0.97); }
+
+      /* ── BORDER GLOW (focus/hover) ───────────────────────── */
+      .search-wrap {
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .search-wrap:focus-within {
+        border-color: #111827 !important;
+        box-shadow: 0 0 0 3px rgba(17,24,39,0.08);
+      }
+
+      /* ── NAV LINK UNDERLINE SLIDE ─────────────────────────── */
+      .nav-ul a {
+        position: relative;
+        transition: color 0.2s;
+      }
+      .nav-ul a::after {
+        content: '';
+        position: absolute; bottom: -2px; left: 0;
+        width: 0; height: 1.5px;
+        background: currentColor;
+        transition: width 0.25s cubic-bezier(.22,1,.36,1);
+      }
+      .nav-ul a:hover::after { width: 100%; }
+
+      /* ── LOGO MICRO-ANIMATION ─────────────────────────────── */
+      .brand-logo {
+        display: inline-block;
+        transition: letter-spacing 0.3s cubic-bezier(.22,1,.36,1),
+                    opacity 0.2s;
+      }
+      .brand-logo:hover { letter-spacing: 0.06em; opacity: 0.75; }
+
+      /* ── BADGE PULSE ──────────────────────────────────────── */
+      @keyframes badge-pulse {
+        0%,100% { box-shadow: 0 0 0 0 rgba(17,24,39,0.4); }
+        50%     { box-shadow: 0 0 0 5px rgba(17,24,39,0); }
+      }
+      .badge-pulse { animation: badge-pulse 2.5s ease infinite; }
+
+      /* ── ARROW SLIDE ──────────────────────────────────────── */
+      .arrow-slide {
+        display: inline-flex; align-items: center; gap: 4px;
+        transition: gap 0.2s cubic-bezier(.22,1,.36,1);
+      }
+      .arrow-slide:hover { gap: 8px; }
+    </style>
   </head>
   <body class="bg-white text-gray-900 antialiased">
+
     <!-- top bar -->
     <div class="bg-neutral-900 text-gray-300 text-xs">
       <div class="mx-auto max-w-screen-xl flex items-center justify-between px-4 h-9">
         <span>Free worldwide shipping on orders over $150</span>
-        <span class="hidden sm:flex gap-4">
+        <span class="hidden sm:flex gap-4 nav-ul">
           <a href={`${base}/about`} class="hover:text-white">About</a>
           <a href={`${base}/contact`} class="hover:text-white">Contact</a>
         </span>
@@ -33,16 +144,16 @@ const base = '/store';
     </div>
 
     <!-- main header -->
-    <header class="border-b border-gray-200 bg-white">
+    <header class="border-b border-gray-200 bg-white sticky top-0 z-40 backdrop-blur-sm bg-white/95">
       <div class="mx-auto max-w-screen-xl flex items-center gap-6 px-4 py-4">
-        <a href={base} class="text-2xl font-extrabold tracking-tight shrink-0">{site.brand}</a>
-        <div class="hidden md:flex flex-1 max-w-xl items-center rounded-lg border border-gray-200 bg-gray-50 focus-within:border-neutral-900">
+        <a href={base} class="brand-logo text-2xl font-extrabold tracking-tight shrink-0">{site.brand}</a>
+        <div class="hidden md:flex flex-1 max-w-xl items-center rounded-lg border border-gray-200 bg-gray-50 search-wrap">
           <input type="text" placeholder="Search for products…" class="flex-1 bg-transparent px-4 py-2.5 text-sm outline-none" />
-          <button class="px-4 text-gray-500" aria-label="Search">
+          <button class="px-4 text-gray-500 transition hover:text-neutral-900" aria-label="Search">
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
           </button>
         </div>
-        <div class="ml-auto flex items-center gap-5 text-gray-700">
+        <div class="ml-auto flex items-center gap-5 text-gray-700 nav-ul">
           <a href={`${base}/contact`} class="flex items-center gap-1.5 text-sm hover:text-neutral-900">
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"/></svg>
             <span class="hidden lg:inline">Wishlist</span>
@@ -55,7 +166,7 @@ const base = '/store';
       </div>
       <!-- category nav -->
       <nav class="border-t border-gray-200 bg-white">
-        <div class="mx-auto max-w-screen-xl flex items-center gap-6 px-4 h-12 overflow-x-auto text-sm font-medium">
+        <div class="mx-auto max-w-screen-xl flex items-center gap-6 px-4 h-12 overflow-x-auto text-sm font-medium nav-ul">
           {categories.map((c) => (
             <a href={`${base}/shop/${c.id}`} class="whitespace-nowrap text-gray-700 hover:text-neutral-900">{c.name}</a>
           ))}
@@ -74,7 +185,7 @@ const base = '/store';
     <footer class="bg-white border-t border-gray-200 mt-16">
       <div class="mx-auto max-w-screen-xl px-4 py-12 grid gap-8 md:grid-cols-4">
         <div class="md:col-span-2">
-          <div class="text-2xl font-extrabold tracking-tight">{site.brand}</div>
+          <div class="brand-logo text-2xl font-extrabold tracking-tight inline-block">{site.brand}</div>
           <p class="mt-3 max-w-sm text-sm text-gray-500 leading-relaxed">
             Men's clothing store — heavyweight essentials and relaxed tailoring,
             shipped worldwide. Built to be worn hard and kept for years.
@@ -82,7 +193,7 @@ const base = '/store';
         </div>
         <div>
           <h4 class="text-sm font-semibold text-gray-900 mb-3">Shop</h4>
-          <ul class="space-y-2 text-sm text-gray-500">
+          <ul class="space-y-2 text-sm text-gray-500 nav-ul">
             {categories.map((c) => (
               <li><a href={`${base}/shop/${c.id}`} class="hover:text-neutral-900">{c.name}</a></li>
             ))}
@@ -90,7 +201,7 @@ const base = '/store';
         </div>
         <div>
           <h4 class="text-sm font-semibold text-gray-900 mb-3">Help</h4>
-          <ul class="space-y-2 text-sm text-gray-500">
+          <ul class="space-y-2 text-sm text-gray-500 nav-ul">
             <li><a href={`${base}/contact`} class="hover:text-neutral-900">Contact</a></li>
             <li><a href={`${base}/about`} class="hover:text-neutral-900">About</a></li>
             <li><a href="/privacy" class="hover:text-neutral-900">Privacy policy</a></li>
@@ -104,5 +215,32 @@ const base = '/store';
         </div>
       </div>
     </footer>
+
+    <!-- Intersection Observer for scroll-in animations -->
+    <script is:inline>
+      (function() {
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+        function observe() {
+          document.querySelectorAll('[data-animate],[data-stagger]').forEach(function(el) {
+            io.observe(el);
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', observe);
+        } else {
+          observe();
+        }
+      })();
+    </script>
+
   </body>
 </html>
