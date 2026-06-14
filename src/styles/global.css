@@ -6,6 +6,18 @@
   --color-ink: #0a0a0a;
   --color-paper: #f4f4f1;
   --color-acid: #d4ff00;
+
+  /* primary palette for the Flowbite-style STORE theme (refined near-black) */
+  --color-primary-50: #f6f6f7;
+  --color-primary-100: #e6e6e8;
+  --color-primary-200: #cfcfd3;
+  --color-primary-300: #a9a9b0;
+  --color-primary-400: #7c7c85;
+  --color-primary-500: #5b5b63;
+  --color-primary-600: #44444a;
+  --color-primary-700: #2c2c31;
+  --color-primary-800: #1c1c20;
+  --color-primary-900: #111114;
 }
 
 html {
