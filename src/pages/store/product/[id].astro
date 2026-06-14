@@ -11,7 +11,7 @@ const base = '/store';
 const alibaba = alibabaHref(base);
 const kw = ({ tshirt:'tshirt,menswear', hoodie:'hoodie,sweatshirt', suit:'suit,man', shorts:'shorts,menswear' })[product.category] || 'menswear';
 const lock = [...product.id].reduce((a, c) => a + c.charCodeAt(0), 0);
-const img = product.image || `https://loremflickr.com/800/800/${kw}?lock=${lock}`;
+const img = product.image || `https://picsum.photos/seed/${product.id}/800/800`;
 ---
 <Layout title={`${product.name} — Store`} description={product.desc}>
   <section class="px-4 py-8">

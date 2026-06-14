@@ -2,7 +2,7 @@
 const { product, base = '/store' } = Astro.props;
 const kw = ({ tshirt:'tshirt,menswear', hoodie:'hoodie,sweatshirt', suit:'suit,man', shorts:'shorts,menswear' })[product.category] || 'menswear';
 const lock = [...product.id].reduce((a, c) => a + c.charCodeAt(0), 0);
-const img = product.image || `https://loremflickr.com/600/600/${kw}?lock=${lock}`;
+const img = product.image || `https://picsum.photos/seed/${product.id}/600/600`;
 ---
 <div class="rounded-lg border border-gray-200 bg-white p-4 transition hover:shadow-lg">
   <a href={`${base}/product/${product.id}`} class="block">
